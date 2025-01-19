@@ -3,8 +3,62 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.12.35707.178 d17.12
 MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{639B4C17-C158-4509-A3CC-E8056B10158F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{4F041F20-4DF7-4AFD-AED0-B1A0B3E5547C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Api", "src\CashFlow.Api\CashFlow.Api.csproj", "{E493E582-BF85-412C-8728-D5CF4C624856}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Domain", "src\CashFlow.Domain\CashFlow.Domain.csproj", "{B1A0F3FB-E454-4E98-8AAB-439D8C0ADB88}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Application", "src\CashFlow.Application\CashFlow.Application.csproj", "{85862819-BA3B-41B2-8E13-2B0A53180A29}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Communication", "src\CashFlow.Communication\CashFlow.Communication.csproj", "{9AA620A0-506E-44E1-AA80-E3A5562A068F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Exception", "src\CashFlow.Exception\CashFlow.Exception.csproj", "{3A2EE4A6-E3BC-42F7-A880-E44FA43D9D03}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CashFlow.Infrastructure", "src\CashFlow.Infrastructure\CashFlow.Infrastructure.csproj", "{8EAEE402-826B-4C4E-BF65-45A8845DFCF0}"
+EndProject
 Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E493E582-BF85-412C-8728-D5CF4C624856}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E493E582-BF85-412C-8728-D5CF4C624856}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E493E582-BF85-412C-8728-D5CF4C624856}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E493E582-BF85-412C-8728-D5CF4C624856}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1A0F3FB-E454-4E98-8AAB-439D8C0ADB88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1A0F3FB-E454-4E98-8AAB-439D8C0ADB88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1A0F3FB-E454-4E98-8AAB-439D8C0ADB88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1A0F3FB-E454-4E98-8AAB-439D8C0ADB88}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85862819-BA3B-41B2-8E13-2B0A53180A29}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85862819-BA3B-41B2-8E13-2B0A53180A29}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85862819-BA3B-41B2-8E13-2B0A53180A29}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85862819-BA3B-41B2-8E13-2B0A53180A29}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9AA620A0-506E-44E1-AA80-E3A5562A068F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AA620A0-506E-44E1-AA80-E3A5562A068F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AA620A0-506E-44E1-AA80-E3A5562A068F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AA620A0-506E-44E1-AA80-E3A5562A068F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3A2EE4A6-E3BC-42F7-A880-E44FA43D9D03}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A2EE4A6-E3BC-42F7-A880-E44FA43D9D03}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A2EE4A6-E3BC-42F7-A880-E44FA43D9D03}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A2EE4A6-E3BC-42F7-A880-E44FA43D9D03}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EAEE402-826B-4C4E-BF65-45A8845DFCF0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EAEE402-826B-4C4E-BF65-45A8845DFCF0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EAEE402-826B-4C4E-BF65-45A8845DFCF0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EAEE402-826B-4C4E-BF65-45A8845DFCF0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{E493E582-BF85-412C-8728-D5CF4C624856} = {639B4C17-C158-4509-A3CC-E8056B10158F}
+		{B1A0F3FB-E454-4E98-8AAB-439D8C0ADB88} = {639B4C17-C158-4509-A3CC-E8056B10158F}
+		{85862819-BA3B-41B2-8E13-2B0A53180A29} = {639B4C17-C158-4509-A3CC-E8056B10158F}
+		{9AA620A0-506E-44E1-AA80-E3A5562A068F} = {639B4C17-C158-4509-A3CC-E8056B10158F}
+		{3A2EE4A6-E3BC-42F7-A880-E44FA43D9D03} = {639B4C17-C158-4509-A3CC-E8056B10158F}
+		{8EAEE402-826B-4C4E-BF65-45A8845DFCF0} = {639B4C17-C158-4509-A3CC-E8056B10158F}
 	EndGlobalSection
 EndGlobal
