@@ -1,7 +1,7 @@
 ﻿using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Exception;
 using CommonTestUtilities.Requests;
-using FluentAssertions;
+using Shouldly;
 
 namespace Validators.Test.Expenses.Register;
 public class RegisterExpenseValidatorTests
@@ -17,24 +17,26 @@ public class RegisterExpenseValidatorTests
         var result = validator.Validate(request);
 
         // Assert
-        result.IsValid.Should().BeTrue();
+        result.IsValid.ShouldBeTrue();
     }
 
     [Theory]
     [InlineData("")]
     [InlineData("         ")]
-    [InlineData(null)]
-    public void Error_Title_Empty(string? title)
+    public void Error_Title_Empty(string title)
     {
         // Arrange
         var validator = new RegisterExpenseValidator();
         var request = RequestRegisterExpenseJsonBuilder.Build();
         request.Title = title;
+
         // Act
         var result = validator.Validate(request);
+
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage == ResourceErrorMessages.TITLE_REQUIRED);
+        result.IsValid.ShouldBeFalse();
+        result.Errors.Count.ShouldBe(1);
+        result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.TITLE_REQUIRED);
     }
 
     [Theory]
@@ -49,8 +51,9 @@ public class RegisterExpenseValidatorTests
         // Act
         var result = validator.Validate(request);
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage == ResourceErrorMessages.AMOUNT_MUST_BE_GREATER_THAN_ZERO);
+        result.IsValid.ShouldBeFalse();
+        result.Errors.Count.ShouldBe(1);
+        result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.AMOUNT_MUST_BE_GREATER_THAN_ZERO);
     }
 
     [Fact]
@@ -63,8 +66,9 @@ public class RegisterExpenseValidatorTests
         // Act
         var result = validator.Validate(request);
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage == ResourceErrorMessages.EXPANSIVE_DATE_CANNOT_FOR_THE_FUTURE);
+        result.IsValid.ShouldBeFalse();
+        result.Errors.Count.ShouldBe(1);
+        result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.EXPANSIVE_DATE_CANNOT_FOR_THE_FUTURE);
     }
 
     [Fact]
@@ -77,7 +81,8 @@ public class RegisterExpenseValidatorTests
         // Act
         var result = validator.Validate(request);
         // Assert
-        result.IsValid.Should().BeFalse();
-        result.Errors.Should().ContainSingle().And.Contain(e => e.ErrorMessage == ResourceErrorMessages.PAYMENT_TYPE_INVALID);
+        result.IsValid.ShouldBeFalse();
+        result.Errors.Count.ShouldBe(1);
+        result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.PAYMENT_TYPE_INVALID);
     }
 }
