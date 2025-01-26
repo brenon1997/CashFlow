@@ -46,7 +46,7 @@ public class ExpensesController : ControllerBase
     [ProducesResponseType(typeof(ResponseErrorJson), StatusCodes.Status404NotFound)]
     public async Task<IActionResult> GetById(
         [FromServices] IGetExpenseByIdUseCase useCase,
-        [FromRoute] int id)
+        [FromRoute] long id)
     {
         var response = await useCase.Execute(id);
 

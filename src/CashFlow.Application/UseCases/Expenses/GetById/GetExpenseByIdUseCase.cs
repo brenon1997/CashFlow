@@ -16,7 +16,7 @@ public class GetExpenseByIdUseCase : IGetExpenseByIdUseCase
         _expensesRepository = expensesRepository;
         _mapper = mapper;
     }
-    public async Task<ResponseExpenseJson> Execute(int id)
+    public async Task<ResponseExpenseJson> Execute(long id)
     {
         var expense = await _expensesRepository.GetById(id);
 
