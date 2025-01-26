@@ -10,16 +10,16 @@ using FluentValidation;
 namespace CashFlow.Application.UseCases.Expenses.Register;
 public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 {
-    private readonly IExpensesRepository _repository;
+    private readonly IExpensesWriteOnlyRepository _expensesWriteOnlyRepository;
     private readonly IUnitOfWork _unitOfWork;
     private readonly IMapper _mapper;
 
     public RegisterExpenseUseCase(
-        IExpensesRepository repository, 
+        IExpensesWriteOnlyRepository expensesWriteOnlyRepository, 
         IUnitOfWork unitOfWork,
         IMapper mapper)
     {
-        _repository = repository;
+        _expensesWriteOnlyRepository = expensesWriteOnlyRepository;
         _unitOfWork = unitOfWork;
         _mapper = mapper;
     }
@@ -29,7 +29,7 @@ public class RegisterExpenseUseCase : IRegisterExpenseUseCase
 
         var entityExpense = _mapper.Map<Expense>(request);
 
-        await _repository.Add(entityExpense);
+        await _expensesWriteOnlyRepository.Add(entityExpense);
 
         await _unitOfWork.Commit();
 

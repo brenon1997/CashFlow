@@ -7,18 +7,18 @@ using CashFlow.Exception.ExceptionBase;
 namespace CashFlow.Application.UseCases.Expenses.GetById;
 public class GetExpenseByIdUseCase : IGetExpenseByIdUseCase
 {
-    private IExpensesRepository _expensesRepository;
+    private IExpensesReadOnlyRepository _expensesReadOnlyRepository;
     private readonly IMapper _mapper;
     public GetExpenseByIdUseCase(
-        IExpensesRepository expensesRepository,
+        IExpensesReadOnlyRepository expensesReadOnlyRepository,
         IMapper mapper)
     {
-        _expensesRepository = expensesRepository;
+        _expensesReadOnlyRepository = expensesReadOnlyRepository;
         _mapper = mapper;
     }
     public async Task<ResponseExpenseJson> Execute(long id)
     {
-        var expense = await _expensesRepository.GetById(id);
+        var expense = await _expensesReadOnlyRepository.GetById(id);
 
         if (expense is null)
         {
