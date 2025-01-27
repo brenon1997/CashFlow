@@ -1,5 +1,6 @@
 ﻿using CashFlow.Domain.Entities;
 using CashFlow.Domain.Respositories.Expenses;
+using Microsoft.EntityFrameworkCore;
 
 namespace CashFlow.Infrastructure.DataAccess.Repositories;
 internal class ExpensesWriteOnlyRepository : IExpensesWriteOnlyRepository
@@ -17,11 +18,12 @@ internal class ExpensesWriteOnlyRepository : IExpensesWriteOnlyRepository
 
     public async Task<bool> Delete(long id)
     {
-        var expense = await _dbContext.Expenses.FindAsync(id);
+        var expense = await _dbContext.Expenses.FirstOrDefaultAsync(e => e.Id == id);
         if (expense is null)
         {
             return false;
         }
+
         _dbContext.Expenses.Remove(expense);
         return true;
     }
