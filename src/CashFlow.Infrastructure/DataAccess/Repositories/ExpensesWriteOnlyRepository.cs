@@ -9,8 +9,20 @@ internal class ExpensesWriteOnlyRepository : IExpensesWriteOnlyRepository
     {
         _dbContext = dbContext;
     }
+
     public async Task Add(Expense expense)
     {
         await _dbContext.Expenses.AddAsync(expense);
+    }
+
+    public async Task<bool> Delete(long id)
+    {
+        var expense = await _dbContext.Expenses.FindAsync(id);
+        if (expense is null)
+        {
+            return false;
+        }
+        _dbContext.Expenses.Remove(expense);
+        return true;
     }
 }
