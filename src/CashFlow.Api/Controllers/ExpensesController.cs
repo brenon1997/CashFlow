@@ -2,6 +2,7 @@
 using CashFlow.Application.UseCases.Expenses.GetAll;
 using CashFlow.Application.UseCases.Expenses.GetById;
 using CashFlow.Application.UseCases.Expenses.Register;
+using CashFlow.Application.UseCases.Expenses.Update;
 using CashFlow.Communication.Requests;
 using CashFlow.Communication.Responses;
 using Microsoft.AspNetCore.Mvc;
@@ -18,7 +19,7 @@ public class ExpensesController : ControllerBase
 
     public async Task<IActionResult> Register(
         [FromServices] IRegisterExpenseUseCase useCase,
-        [FromBody] RequestRegisterExpenseJson request)
+        [FromBody] RequestExpenseJson request)
     {
         var response = await useCase.Execute(request);
 
@@ -66,5 +67,4 @@ public class ExpensesController : ControllerBase
 
         return NoContent();
     }
-
 }
