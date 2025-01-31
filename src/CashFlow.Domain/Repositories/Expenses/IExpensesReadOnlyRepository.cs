@@ -1,6 +1,6 @@
 ﻿using CashFlow.Domain.Entities;
 
-namespace CashFlow.Domain.Respositories.Expenses;
+namespace CashFlow.Domain.Repositories.Expenses;
 public interface IExpensesReadOnlyRepository
 {
     Task<List<Expense>> GetAll();

@@ -1,7 +1,7 @@
 ﻿using CashFlow.Domain.Entities;
 using CashFlow.Domain.Enums;
 using CashFlow.Domain.Reports;
-using CashFlow.Domain.Respositories.Expenses;
+using CashFlow.Domain.Repositories.Expenses;
 using ClosedXML.Excel;
 using System.Globalization;
 
