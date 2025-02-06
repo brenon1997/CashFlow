@@ -6,6 +6,7 @@ using CashFlow.Application.UseCases.Expenses.Register;
 using CashFlow.Application.UseCases.Expenses.Reports.Excel;
 using CashFlow.Application.UseCases.Expenses.Reports.Pdf;
 using CashFlow.Application.UseCases.Expenses.Update;
+using CashFlow.Application.UseCases.Users.Register;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace CashFlow.Application;
@@ -14,7 +15,8 @@ public static class DependencyInjectionExtension
     public static void AddApplication(this IServiceCollection services)
     {
         services.AddAutoMapper();
-        services.AddUseCases();
+        services.AddExpensesUseCases();
+        services.AddUsersUseCases();
     }
 
     public static void AddAutoMapper(this IServiceCollection services)
@@ -22,7 +24,7 @@ public static class DependencyInjectionExtension
         services.AddAutoMapper(typeof(AutoMapping));
     }
 
-    public static void AddUseCases(this IServiceCollection services)
+    public static void AddExpensesUseCases(this IServiceCollection services)
     {
         services.AddScoped<IRegisterExpenseUseCase, RegisterExpenseUseCase>();
         services.AddScoped<IGetAllExpensesUseCase, GetAllExpensesUseCase>();
@@ -31,5 +33,10 @@ public static class DependencyInjectionExtension
         services.AddScoped<IUpdateExpenseUseCase, UpdateExpenseUseCase>();
         services.AddScoped<IGenerateExpensesReportExcelUseCase, GenerateExpensesReportExcelUseCase>();
         services.AddScoped<IGenerateExpensesReportPdfUseCase, GenerateExpensesReportPdfUseCase>();
+    }
+
+    public static void AddUsersUseCases(this IServiceCollection services)
+    {
+        services.AddScoped<IRegisterUserUseCase, RegisterUserUseCase>();
     }
 }

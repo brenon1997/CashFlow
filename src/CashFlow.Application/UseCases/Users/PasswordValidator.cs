@@ -17,11 +17,11 @@ public partial class PasswordValidator<T> : PropertyValidator<T, string>
     public override bool IsValid(ValidationContext<T> context, string password)
     {
         if (string.IsNullOrEmpty(password) 
-            && password.Length < 8
-            && UpperCaseLetter().IsMatch(password) is false
-            && LowerCaseLetter().IsMatch(password) is false
-            && NumberCaseLetter().IsMatch(password) is false
-            && SpecialSymbolsCaseLetter().IsMatch(password) is false
+            || password.Length < 8
+            || UpperCaseLetter().IsMatch(password) is false
+            || LowerCaseLetter().IsMatch(password) is false
+            || NumberCaseLetter().IsMatch(password) is false
+            || SpecialSymbolsCaseLetter().IsMatch(password) is false
         )
         {
             context.MessageFormatter.AppendArgument(ERROR_MESSAGE_KEY, ResourceErrorMessages.INVALID_PASSWORD);
