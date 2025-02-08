@@ -36,6 +36,7 @@
 
   <ItemGroup>
     <Folder Include="UseCases\Expenses\Reports\Pdf\Colors\" />
+    <Folder Include="UseCases\Login\DoLogin\" />
   </ItemGroup>
 
   <ItemGroup>
