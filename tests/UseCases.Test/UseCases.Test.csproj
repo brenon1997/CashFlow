@@ -27,7 +27,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Users\Register\" />
+    <Folder Include="Login\DoLogin\" />
   </ItemGroup>
 
 </Project>
