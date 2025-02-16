@@ -37,6 +37,7 @@
 
   <ItemGroup>
     <Folder Include="InlineData\" />
+    <Folder Include="Login\DoLogin\" />
     <Folder Include="Resources\" />
     <Folder Include="Users\Register\" />
   </ItemGroup>
