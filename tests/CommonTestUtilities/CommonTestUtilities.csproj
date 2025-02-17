@@ -21,10 +21,8 @@
   <ItemGroup>
     <Folder Include="Cryptography\" />
     <Folder Include="Mapper\" />
-    <Folder Include="Entities\" />
     <Folder Include="LoggedUser\" />
     <Folder Include="Token\" />
-    <Folder Include="Repositories\" />
   </ItemGroup>
 
 </Project>
