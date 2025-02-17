@@ -36,6 +36,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Expenses\Register\" />
     <Folder Include="InlineData\" />
     <Folder Include="Login\DoLogin\" />
     <Folder Include="Resources\" />
