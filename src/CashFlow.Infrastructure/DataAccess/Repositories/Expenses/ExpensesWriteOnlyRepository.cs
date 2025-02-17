@@ -16,15 +16,10 @@ internal class ExpensesWriteOnlyRepository : IExpensesWriteOnlyRepository
         await _dbContext.Expenses.AddAsync(expense);
     }
 
-    public async Task<bool> Delete(long id)
+    public async Task Delete(long id)
     {
-        var expense = await _dbContext.Expenses.FirstOrDefaultAsync(e => e.Id == id);
-        if (expense is null)
-        {
-            return false;
-        }
+        var expense = await _dbContext.Expenses.FirstAsync(e => e.Id == id);
 
         _dbContext.Expenses.Remove(expense);
-        return true;
     }
 }

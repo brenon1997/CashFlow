@@ -2,6 +2,7 @@
 using CashFlow.Domain.Enums;
 using CashFlow.Domain.Reports;
 using CashFlow.Domain.Repositories.Expenses;
+using CashFlow.Domain.Services.LoggedUser;
 using ClosedXML.Excel;
 using System.Globalization;
 
@@ -9,23 +10,29 @@ namespace CashFlow.Application.UseCases.Expenses.Reports.Excel;
 public class GenerateExpensesReportExcelUseCase : IGenerateExpensesReportExcelUseCase
 {
     private IExpensesReadOnlyRepository _expensesReadOnlyRepository;
-    public GenerateExpensesReportExcelUseCase(IExpensesReadOnlyRepository expensesReadOnlyRepository)
+    private readonly ILoggedUser _loggedUser;
+    public GenerateExpensesReportExcelUseCase(
+        IExpensesReadOnlyRepository expensesReadOnlyRepository,
+        ILoggedUser loggedUser)
     {
         _expensesReadOnlyRepository = expensesReadOnlyRepository;
+        _loggedUser = loggedUser;
     }
     public async Task<byte[]> Execute(DateOnly month)
     {
-        var expenses = await _expensesReadOnlyRepository.FilterByMonth(month);
+        var loggedUser = await _loggedUser.Get();
+
+        var expenses = await _expensesReadOnlyRepository.FilterByMonth(loggedUser, month);
         if (expenses.Count == 0)
             return [];
 
-        return GenerateReport(expenses, month);
+        return GenerateReport(loggedUser.Name, expenses, month);
     }
 
-    private byte[] GenerateReport(IEnumerable<Expense> expenses, DateOnly month)
+    private byte[] GenerateReport(string userName, IEnumerable<Expense> expenses, DateOnly month)
     {
         using var workbook = new XLWorkbook();
-        workbook.Author = "CashFlow";
+        workbook.Author = userName;
         workbook.Properties.Title = $"Expenses Report {month:Y}";
 
         var worksheet = workbook.Worksheets.Add($"{month:Y}");

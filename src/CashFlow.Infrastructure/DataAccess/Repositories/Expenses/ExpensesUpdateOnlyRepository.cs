@@ -11,9 +11,9 @@ internal class ExpensesUpdateOnlyRepository : IExpensesUpdateOnlyRepository
         _dbContext = dbContext;
     }
 
-    public async Task<Expense?> GetById(long id)
+    public async Task<Expense?> GetById(User user, long id)
     {
-        return await _dbContext.Expenses.FirstOrDefaultAsync(e => e.Id == id);
+        return await _dbContext.Expenses.FirstOrDefaultAsync(e => e.Id == id && e.UserId == user.Id);
     }
 
     public void Update(Expense expense)
