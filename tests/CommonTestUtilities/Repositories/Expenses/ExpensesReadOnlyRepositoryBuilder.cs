@@ -2,7 +2,7 @@
 using CashFlow.Domain.Repositories.Expenses;
 using Moq;
 
-namespace CommonTestUtilities.Repositories;
+namespace CommonTestUtilities.Repositories.Expenses;
 public class ExpensesReadOnlyRepositoryBuilder
 {
     private readonly Mock<IExpensesReadOnlyRepository> _repository;

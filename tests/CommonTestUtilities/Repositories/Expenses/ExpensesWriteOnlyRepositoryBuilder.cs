@@ -1,7 +1,7 @@
 ﻿using CashFlow.Domain.Repositories.Expenses;
 using Moq;
 
-namespace CommonTestUtilities.Repositories;
+namespace CommonTestUtilities.Repositories.Expenses;
 public class ExpensesWriteOnlyRepositoryBuilder
 {
     public static IExpensesWriteOnlyRepository Build()
