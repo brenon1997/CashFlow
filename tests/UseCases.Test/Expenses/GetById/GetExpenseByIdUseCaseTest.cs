@@ -28,6 +28,9 @@ public class GetExpenseByIdUseCaseTest
         result.Date.ShouldBe(expense.Date);
         result.Amount.ShouldBe(expense.Amount);
         result.PaymentType.ShouldBe((CashFlow.Communication.Enums.PaymentType)expense.PaymentType);
+        result.Tags.ShouldNotBeNull();
+        result.Tags.ShouldNotBeEmpty();
+        result.Tags.Select(tag => ((CashFlow.Domain.Enums.Tag)tag)).ShouldBe(expense.Tags.Select(tag => tag.Value), ignoreOrder: true);
     }
 
     [Fact]
