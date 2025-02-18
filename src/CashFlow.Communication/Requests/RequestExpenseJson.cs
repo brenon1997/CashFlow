@@ -8,4 +8,5 @@ public class RequestExpenseJson
     public DateTime Date { get; set; } = DateTime.Now;
     public decimal Amount { get; set; }
     public PaymentType PaymentType { get; set; }
+    public List<Tag> Tags { get; set; } = [];
 }
