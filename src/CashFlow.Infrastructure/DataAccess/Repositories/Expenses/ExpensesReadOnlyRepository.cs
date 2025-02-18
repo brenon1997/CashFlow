@@ -3,13 +3,9 @@ using CashFlow.Domain.Repositories.Expenses;
 using Microsoft.EntityFrameworkCore;
 
 namespace CashFlow.Infrastructure.DataAccess.Repositories.Expenses;
-internal class ExpensesReadOnlyRepository : IExpensesReadOnlyRepository
+internal class ExpensesReadOnlyRepository : ExpensesRepositoryBase, IExpensesReadOnlyRepository
 {
-    private readonly CashFlowDbContext _dbContext;
-    public ExpensesReadOnlyRepository(CashFlowDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    public ExpensesReadOnlyRepository(CashFlowDbContext dbContext) : base(dbContext) { }
 
     public async Task<List<Expense>> GetAll(User user)
     {
@@ -18,7 +14,9 @@ internal class ExpensesReadOnlyRepository : IExpensesReadOnlyRepository
 
     public async Task<Expense?> GetById(User user, long id)
     {
-        return await _dbContext.Expenses.AsNoTracking().FirstOrDefaultAsync(e => e.Id == id && e.UserId == user.Id);
+        return await GetFullExpense()
+            .AsNoTracking()
+            .FirstOrDefaultAsync(e => e.Id == id && e.UserId == user.Id);
     }
 
     public async Task<List<Expense>> FilterByMonth(User user, DateOnly date)

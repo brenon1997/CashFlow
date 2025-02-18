@@ -3,13 +3,9 @@ using CashFlow.Domain.Repositories.Expenses;
 using Microsoft.EntityFrameworkCore;
 
 namespace CashFlow.Infrastructure.DataAccess.Repositories.Expenses;
-internal class ExpensesWriteOnlyRepository : IExpensesWriteOnlyRepository
+internal class ExpensesWriteOnlyRepository : ExpensesRepositoryBase, IExpensesWriteOnlyRepository
 {
-    private readonly CashFlowDbContext _dbContext;
-    public ExpensesWriteOnlyRepository(CashFlowDbContext dbContext)
-    {
-        _dbContext = dbContext;
-    }
+    public ExpensesWriteOnlyRepository(CashFlowDbContext dbContext) : base(dbContext) { }
 
     public async Task Add(Expense expense)
     {
