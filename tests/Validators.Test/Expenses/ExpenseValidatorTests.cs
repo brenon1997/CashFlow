@@ -4,8 +4,8 @@ using CashFlow.Exception;
 using CommonTestUtilities.Requests;
 using Shouldly;
 
-namespace Validators.Test.Expenses.Register;
-public class RegisterExpenseValidatorTests
+namespace Validators.Test.Expenses;
+public class ExpenseValidatorTests
 {
     [Fact]
     public void Success()
