@@ -87,4 +87,19 @@ public class ExpenseValidatorTests
         result.Errors.Count.ShouldBe(1);
         result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.PAYMENT_TYPE_INVALID);
     }
+
+    [Fact]
+    public void Error_Tag_Invalid()
+    {
+        // Arrange
+        var validator = new ExpenseValidator();
+        var request = RequestRegisterExpenseJsonBuilder.Build();
+        request.Tags.Add((CashFlow.Communication.Enums.Tag)1500);
+        // Act
+        var result = validator.Validate(request);
+        // Assert
+        result.IsValid.ShouldBeFalse();
+        result.Errors.Count.ShouldBe(1);
+        result.Errors.ShouldContain(e => e.ErrorMessage == ResourceErrorMessages.TAG_TYPE_NOT_SUPPORTED);
+    }
 }
