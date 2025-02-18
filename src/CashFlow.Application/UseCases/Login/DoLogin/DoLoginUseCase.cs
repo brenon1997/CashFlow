@@ -3,7 +3,7 @@ using CashFlow.Communication.Responses;
 using CashFlow.Domain.Repositories.Users;
 using CashFlow.Domain.Security.Cryptography;
 using CashFlow.Domain.Security.Tokens;
-using CashFlow.Exception.ExceptionBase;
+using CashFlow.Exception.ExceptionsBase;
 
 namespace CashFlow.Application.UseCases.Login.DoLogin;
 public class DoLoginUseCase : IDoLoginUseCase

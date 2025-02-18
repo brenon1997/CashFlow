@@ -1,7 +1,7 @@
 ﻿using CashFlow.Application.UseCases.Expenses.GetById;
 using CashFlow.Domain.Entities;
 using CashFlow.Exception;
-using CashFlow.Exception.ExceptionBase;
+using CashFlow.Exception.ExceptionsBase;
 using CommonTestUtilities.Entities;
 using CommonTestUtilities.LoggedUser;
 using CommonTestUtilities.Mapper;

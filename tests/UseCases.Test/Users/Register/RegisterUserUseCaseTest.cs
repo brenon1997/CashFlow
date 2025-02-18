@@ -1,6 +1,6 @@
 ﻿using CashFlow.Application.UseCases.Users.Register;
 using CashFlow.Exception;
-using CashFlow.Exception.ExceptionBase;
+using CashFlow.Exception.ExceptionsBase;
 using CommonTestUtilities.Cryptography;
 using CommonTestUtilities.Mapper;
 using CommonTestUtilities.Repositories;

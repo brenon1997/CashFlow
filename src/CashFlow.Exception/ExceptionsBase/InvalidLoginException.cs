@@ -1,6 +1,6 @@
 ﻿using System.Net;
 
-namespace CashFlow.Exception.ExceptionBase;
+namespace CashFlow.Exception.ExceptionsBase;
 public class InvalidLoginException : CashFlowException
 {
     public InvalidLoginException() : base(ResourceErrorMessages.EMAIL_OR_PASSWORD_INVALID)
